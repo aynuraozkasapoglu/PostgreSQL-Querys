@@ -126,4 +126,50 @@ GROUP BY country_id
 ORDER BY sehir_sayisi DESC
 LIMIT 1;
 
+CREATE TABLE employee (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(50),
+    birthday DATE,
+    email VARCHAR(100)
+);
+
+INSERT INTO employee (id, name, birthday, email) VALUES
+(1, 'John Doe', '1990-05-15', 'john.doe@example.com'),
+(2, 'Jane Smith', '1985-08-22', 'jane.smith@example.com'),
+(3, 'Alice Johnson', '1992-11-10', 'alice.johnson@example.com'),
+(4, 'Bob Brown', '1988-03-05', 'bob.brown@example.com'),
+(5, 'Charlie White', '1995-07-19', 'charlie.white@example.com');
+-- (...)
+
+-- ID'ye göre güncelleme
+UPDATE employee SET name = 'Updated Name' WHERE id = 1;
+
+UPDATE employee SET birthday = '1991-06-25' WHERE name = 'Jane Smith';
+
+
+UPDATE employee SET email = 'updated.email@example.com' WHERE birthday = '1988-03-05';
+
+
+UPDATE employee SET name = 'New Name' WHERE email = 'alice.johnson@example.com';
+
+
+UPDATE employee SET birthday = '2000-01-01' WHERE id BETWEEN 10 AND 20;
+
+
+-- ID'ye göre silme
+DELETE FROM employee WHERE id = 5;
+
+-- İsme göre silme
+DELETE FROM employee WHERE name = 'Bob Brown';
+
+-- Doğum tarihine göre silme
+DELETE FROM employee WHERE birthday = '1992-11-10';
+
+-- Emaile göre silme
+DELETE FROM employee WHERE email = 'john.doe@example.com';
+
+-- ID'nin belirli bir aralıkta olduğu durumlarda silme
+DELETE FROM employee WHERE id BETWEEN 30 AND 35;
+
+
 
